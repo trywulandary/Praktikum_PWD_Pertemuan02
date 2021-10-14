@@ -1,0 +1,106 @@
+Setting environment for using XAMPP for Windows.
+01052020@DESKTOP-IMJ8UM5 c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 274
+Server version: 10.1.38-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database akademik;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| akademik           |
+| db_lazismu         |
+| db_perpuspro       |
+| food court         |
+| information_schema |
+| kpdesa             |
+| kuliner_jogja      |
+| lazismu            |
+| mysql              |
+| performance_schema |
+| perpustakaan       |
+| phpmyadmin         |
+| postest7           |
+| postestkk          |
+| postkk             |
+| responsikk         |
+| test               |
+| warga              |
+| warga_db           |
+| web_service        |
++--------------------+
+20 rows in set (0.00 sec)
+
+MariaDB [(none)]> use akademik;
+Database changed
+MariaDB [akademik]> CREATE TABLE mahasiswa (
+    -> NIM int NOT NULL AUTO_INCREMENT,
+    -> Nama varchar(255) NOT NULL,
+    -> Jk varchar(255) NOT NULL,
+    -> Alamat text NOT NULL,
+    -> Tgl_lahir date,
+    -> PRIMARY KEY(NIM)
+    -> );
+Query OK, 0 rows affected (0.12 sec)
+
+MariaDB [akademik]> show tables;
++--------------------+
+| Tables_in_akademik |
++--------------------+
+| mahasiswa          |
++--------------------+
+1 row in set (0.00 sec)
+
+MariaDB [akademik]> INSERT INTO mahasiswa VALUES
+    -> (1800018216, 'Try Wulandary', 'Perempuan', 'jl. ki ageng pemanahan', '2000-02-16'),
+    -> (1800018224, 'Shafira', 'Perempuan', 'banguntapan', '2000-05-05'),
+    -> (1800018197, 'Aldi', 'Laki-laki', 'Riau', '2000-07-17'),
+    -> (1800018227, 'Eka', 'Perempuan', 'Lampung', '2000-01-23');
+Query OK, 4 rows affected (0.07 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [akademik]> select * from mahasiswa;
++------------+---------------+-----------+------------------------+------------+
+| NIM        | Nama          | Jk        | Alamat                 | Tgl_lahir  |
++------------+---------------+-----------+------------------------+------------+
+| 1800018197 | Aldi          | Laki-laki | Riau                   | 2000-07-17 |
+| 1800018216 | Try Wulandary | Perempuan | jl. ki ageng pemanahan | 2000-02-16 |
+| 1800018224 | Shafira       | Perempuan | banguntapan            | 2000-05-05 |
+| 1800018227 | Eka           | Perempuan | Lampung                | 2000-01-23 |
++------------+---------------+-----------+------------------------+------------+
+4 rows in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa WHERE Nama = 'Try Wulandary';
++------------+---------------+-----------+------------------------+------------+
+| NIM        | Nama          | Jk        | Alamat                 | Tgl_lahir  |
++------------+---------------+-----------+------------------------+------------+
+| 1800018216 | Try Wulandary | Perempuan | jl. ki ageng pemanahan | 2000-02-16 |
++------------+---------------+-----------+------------------------+------------+
+1 row in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa WHERE Alamat = 'Riau';
++------------+------+-----------+--------+------------+
+| NIM        | Nama | Jk        | Alamat | Tgl_lahir  |
++------------+------+-----------+--------+------------+
+| 1800018197 | Aldi | Laki-laki | Riau   | 2000-07-17 |
++------------+------+-----------+--------+------------+
+1 row in set (0.00 sec)
+
+MariaDB [akademik]> select * from mahasiswa WHERE Jk = 'Perempuan';
++------------+---------------+-----------+------------------------+------------+
+| NIM        | Nama          | Jk        | Alamat                 | Tgl_lahir  |
++------------+---------------+-----------+------------------------+------------+
+| 1800018216 | Try Wulandary | Perempuan | jl. ki ageng pemanahan | 2000-02-16 |
+| 1800018224 | Shafira       | Perempuan | banguntapan            | 2000-05-05 |
+| 1800018227 | Eka           | Perempuan | Lampung                | 2000-01-23 |
++------------+---------------+-----------+------------------------+------------+
+3 rows in set (0.00 sec)
