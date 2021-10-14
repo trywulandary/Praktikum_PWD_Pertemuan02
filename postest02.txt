@@ -1,0 +1,88 @@
+MariaDB [akademik]> ALTER TABLE mahasiswa ADD jurusan varchar(255);
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+MariaDB [akademik]> select * from mahasiswa;
++------------+---------------+-----------+------------------------+------------+---------+
+| NIM        | Nama          | Jk        | Alamat                 | Tgl_lahir  | jurusan |
++------------+---------------+-----------+------------------------+------------+---------+
+| 1800018197 | Aldi          | Laki-laki | Riau                   | 2000-07-17 | NULL    |
+| 1800018216 | Try Wulandary | Perempuan | jl. ki ageng pemanahan | 2000-02-16 | NULL    |
+| 1800018224 | Shafira       | Perempuan | banguntapan            | 2000-05-05 | NULL    |
+| 1800018227 | Eka           | Perempuan | Lampung                | 2000-01-23 | NULL    |
++------------+---------------+-----------+------------------------+------------+---------+
+4 rows in set (0.00 sec)
+MariaDB [akademik]> INSERT INTO mahasiswa VALUES
+    -> (1900020165, 'Joko', 'Laki-laki', 'Yogyakarta', '2000-10-10', 'Sastra Inggris'),
+    -> (2300016125, 'Chika', 'Perempuan', 'Jambi', '2000-09-08', 'PGSD');
+Query OK, 2 rows affected, 1 warning (0.11 sec)
+Records: 2  Duplicates: 0  Warnings: 1
+
+MariaDB [akademik]> select * from mahasiswa;
++------------+---------------+-----------+------------------------+------------+----------------+
+| NIM        | Nama          | Jk        | Alamat                 | Tgl_lahir  | jurusan        |
++------------+---------------+-----------+------------------------+------------+----------------+
+| 1800018197 | Aldi          | Laki-laki | Riau                   | 2000-07-17 | NULL           |
+| 1800018216 | Try Wulandary | Perempuan | jl. ki ageng pemanahan | 2000-02-16 | NULL           |
+| 1800018224 | Shafira       | Perempuan | banguntapan            | 2000-05-05 | NULL           |
+| 1800018227 | Eka           | Perempuan | Lampung                | 2000-01-23 | NULL           |
+| 1900020165 | Joko          | Laki-laki | Yogyakarta             | 2000-10-10 | Sastra Inggris |
+| 2147483647 | Chika         | Perempuan | Jambi                  | 2000-09-08 | PGSD           |
++------------+---------------+-----------+------------------------+------------+----------------+
+6 rows in set (0.00 sec)
+
+MariaDB [akademik]> UPDATE mahasiswa SET jurusan = 'Teknik Informatika' WHERE Nama = 'Try Wulandary';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> select * from mahasiswa;
++------------+---------------+-----------+------------------------+------------+--------------------+
+| NIM        | Nama          | Jk        | Alamat                 | Tgl_lahir  | jurusan            |
++------------+---------------+-----------+------------------------+------------+--------------------+
+| 1800018197 | Aldi          | Laki-laki | Riau                   | 2000-07-17 | NULL               |
+| 1800018216 | Try Wulandary | Perempuan | jl. ki ageng pemanahan | 2000-02-16 | Teknik Informatika |
+| 1800018224 | Shafira       | Perempuan | banguntapan            | 2000-05-05 | NULL               |
+| 1800018227 | Eka           | Perempuan | Lampung                | 2000-01-23 | NULL               |
+| 1900020165 | Joko          | Laki-laki | Yogyakarta             | 2000-10-10 | Sastra Inggris     |
+| 2147483647 | Chika         | Perempuan | Jambi                  | 2000-09-08 | PGSD               |
++------------+---------------+-----------+------------------------+------------+--------------------+
+6 rows in set (0.00 sec)
+
+MariaDB [akademik]> UPDATE mahasiswa SET jurusan = 'Kedokteran' WHERE Nama = 'Shafira';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> UPDATE mahasiswa SET jurusan = 'Teknologi Pangan' WHERE Nama = 'Eka';
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> UPDATE mahasiswa SET jurusan = 'Teknik Elektro' WHERE Nama = 'Aldi';
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [akademik]> select * from mahasiswa;
++------------+---------------+-----------+------------------------+------------+--------------------+
+| NIM        | Nama          | Jk        | Alamat                 | Tgl_lahir  | jurusan            |
++------------+---------------+-----------+------------------------+------------+--------------------+
+| 1800018197 | Aldi          | Laki-laki | Riau                   | 2000-07-17 | Teknik Elektro     |
+| 1800018216 | Try Wulandary | Perempuan | jl. ki ageng pemanahan | 2000-02-16 | Teknik Informatika |
+| 1800018224 | Shafira       | Perempuan | banguntapan            | 2000-05-05 | Kedokteran         |
+| 1800018227 | Eka           | Perempuan | Lampung                | 2000-01-23 | Teknologi Pangan   |
+| 1900020165 | Joko          | Laki-laki | Yogyakarta             | 2000-10-10 | Sastra Inggris     |
+| 2147483647 | Chika         | Perempuan | Jambi                  | 2000-09-08 | PGSD               |
++------------+---------------+-----------+------------------------+------------+--------------------+
+6 rows in set (0.00 sec)
+
+MariaDB [akademik]> DELETE from mahasiswa WHERE Nama = 'Eka';
+Query OK, 1 row affected (0.06 sec)
+
+MariaDB [akademik]> select * from mahasiswa;
++------------+---------------+-----------+------------------------+------------+--------------------+
+| NIM        | Nama          | Jk        | Alamat                 | Tgl_lahir  | jurusan            |
++------------+---------------+-----------+------------------------+------------+--------------------+
+| 1800018197 | Aldi          | Laki-laki | Riau                   | 2000-07-17 | Teknik Elektro     |
+| 1800018216 | Try Wulandary | Perempuan | jl. ki ageng pemanahan | 2000-02-16 | Teknik Informatika |
+| 1800018224 | Shafira       | Perempuan | banguntapan            | 2000-05-05 | Kedokteran         |
+| 1900020165 | Joko          | Laki-laki | Yogyakarta             | 2000-10-10 | Sastra Inggris     |
+| 2147483647 | Chika         | Perempuan | Jambi                  | 2000-09-08 | PGSD               |
++------------+---------------+-----------+------------------------+------------+--------------------+
+5 rows in set (0.00 sec)
